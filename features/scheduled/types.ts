@@ -78,4 +78,4 @@ export type ScheduledFormProps = {
   form: UseFormReturnType<ScheduledFormValues>;
 };
 
-export type ScheduleFormValues = z.input<typeof insertScheduledSchema>;
+export type ScheduleFormValues = z.output<typeof insertScheduledSchema>;

@@ -163,7 +163,6 @@ const ScheduledSPAFormPage = () => {
 
   const handleSubmit = () => {
     const result = form.validate();
-    console.log(form.values);
 
     if (!result.hasErrors) {
       const parsed = insertScheduledSchema.parse({
