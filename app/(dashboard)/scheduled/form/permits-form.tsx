@@ -21,7 +21,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   State
                 </Title>
                 <Select
-                  label="statePermitStatus"
+                  label="State Permit Status"
                   placeholder="Select a value..."
                   {...form.getInputProps("statePermitStatus")}
                   key={form.key("statePermitStatus")}
@@ -30,7 +30,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   data={["Test 1", "Test 2", "Test 3"]}
                 />
                 <Select
-                  label="statePermitExpiration"
+                  label="State Permit Expiration"
                   placeholder="Select a value..."
                   {...form.getInputProps("statePermitExpiration")}
                   key={form.key("statePermitExpiration")}
@@ -51,7 +51,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   Local
                 </Title>
                 <Select
-                  label="localPermitStatus"
+                  label="Local Permit Status"
                   placeholder="Select a value..."
                   {...form.getInputProps("localPermitStatus")}
                   key={form.key("localPermitStatus")}
@@ -60,7 +60,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   data={["Test 1", "Test 2", "Test 3"]}
                 />
                 <Select
-                  label="localPermitExpiration"
+                  label="Local Permit Expiration"
                   placeholder="Select a value..."
                   {...form.getInputProps("localPermitExpiration")}
                   key={form.key("localPermitExpiration")}

@@ -12,9 +12,7 @@ import {
   Flex,
   Grid,
   Group,
-  ScrollArea,
   Select,
-  Stack,
   Text,
   Title,
 } from "@mantine/core";
@@ -40,6 +38,7 @@ import RetiredForm from "./retired-form";
 import ActualFinalForm from "./actual-final-form";
 import PermitRemarksForm from "./permit-remarks-form";
 import PermitsForm from "./permits-form";
+import ScrollSpyTabs from "../component/scroll-spy-tabs";
 
 const ScheduledSPAFormPage = () => {
   const router = useRouter();
@@ -56,6 +55,8 @@ const ScheduledSPAFormPage = () => {
     "services",
     "retired",
     "actual-and-final",
+    "permit-remarks",
+    "permits",
   ]); // multiple keys
 
   const handleWoSelection = (value: string | null) => {
@@ -176,7 +177,6 @@ const ScheduledSPAFormPage = () => {
 
   return (
     <div>
-      {JSON.stringify(form.errors)}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -193,6 +193,7 @@ const ScheduledSPAFormPage = () => {
             Add New Scheduled
           </Title>
         </Flex>
+
         <Grid mt={16} mb={10}>
           <Grid.Col span={10}>
             <Box bg="gray.1" p={"sm"} style={{ borderRadius: "5px" }}>
@@ -238,96 +239,84 @@ const ScheduledSPAFormPage = () => {
             </Group>
           </Grid.Col>
         </Grid>
-        <Stack>
-          <ScrollArea h={"66vh"}>
-            <Accordion
-              variant="separated"
-              multiple
-              value={opened}
-              onChange={setOpened}
-            >
-              <Accordion.Item value="scheduled" bg={"yellow.3"}>
-                <Accordion.Control icon={<IconCalendar />}>
-                  Scheduled
-                </Accordion.Control>
-                <Accordion.Panel>
-                  <ScheduledForm form={form} />
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item value="main" bg="#FFFFCC">
-                <Accordion.Control icon={<IconHome />}>Main</Accordion.Control>
-                <Accordion.Panel>
-                  <MainForm form={form} />
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item value="services" bg={"#F8CBAD"}>
-                <Accordion.Control icon={<IconBackhoe />}>
-                  Services
-                </Accordion.Control>
-                <Accordion.Panel>
-                  <ServicesForm form={form} />
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item value="retired" bg={"#DBDBDB"}>
-                <Accordion.Control icon={<IconClockPause />}>
-                  Retired
-                </Accordion.Control>
-                <Accordion.Panel>
-                  <RetiredForm form={form} />
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item value="actual-and-final" bg={"#C6E0B4"}>
-                <Accordion.Control icon={<IconHistoryToggle />}>
-                  Actual and Final
-                </Accordion.Control>
-                <Accordion.Panel>
-                  <ActualFinalForm form={form} />
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item value="permit-remarks" bg={"blue.1"}>
-                <Accordion.Control icon={<IconBookmark />}>
-                  Permit Remarks
-                </Accordion.Control>
-                <Accordion.Panel>
-                  <PermitRemarksForm form={form} />
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item value="permits" bg={"orange.5"}>
-                <Accordion.Control icon={<IconLicense />}>
-                  Permit Remarks
-                </Accordion.Control>
-                <Accordion.Panel>
-                  <PermitsForm form={form} />
-                </Accordion.Panel>
-              </Accordion.Item>
-            </Accordion>
-          </ScrollArea>
-
-          {/* <Box
-            my={10}
-            component="button"
-            onClick={() => toggleExpand("scheduled")}
+        <ScrollSpyTabs>
+          <Accordion
+            variant="separated"
+            multiple
+            value={opened}
+            onChange={setOpened}
+            mt={15}
           >
-            <motion.div
-              animate={{ rotate: expandedRows.has("scheduled") ? 90 : 0 }}
-              transition={{ duration: 0.2 }}
+            <Accordion.Item value="scheduled" bg={"yellow.3"} id="scheduled">
+              <Accordion.Control icon={<IconCalendar />}>
+                Scheduled
+              </Accordion.Control>
+              <Accordion.Panel>
+                <ScheduledForm form={form} />
+              </Accordion.Panel>
+            </Accordion.Item>
+
+            <Accordion.Item value="main" bg="#FFFFCC" id="main">
+              <Accordion.Control icon={<IconHome />}>Main</Accordion.Control>
+              <Accordion.Panel>
+                <MainForm form={form} />
+              </Accordion.Panel>
+            </Accordion.Item>
+
+            <Accordion.Item value="services" bg={"#F8CBAD"} id="services">
+              <Accordion.Control icon={<IconBackhoe />}>
+                Services
+              </Accordion.Control>
+              <Accordion.Panel>
+                <ServicesForm form={form} />
+              </Accordion.Panel>
+            </Accordion.Item>
+
+            <Accordion.Item value="retired" bg={"#DBDBDB"} id="retired">
+              <Accordion.Control icon={<IconClockPause />}>
+                Retired
+              </Accordion.Control>
+              <Accordion.Panel>
+                <RetiredForm form={form} />
+              </Accordion.Panel>
+            </Accordion.Item>
+
+            <Accordion.Item
+              value="actual-and-final"
+              bg={"#C6E0B4"}
+              id="actual-and-final"
             >
-              <Flex align={"center"} gap={2}>
-                <IconChevronRight size={16} />
-              </Flex>
-            </motion.div>
-            <h2>Scheduled</h2>
-          </Box>
-          <Collapse in={expandedRows.has("scheduled")} p="md" bg="yellow">
-            <ScheduledForm form={form} />
-          </Collapse> */}
-        </Stack>
+              <Accordion.Control icon={<IconHistoryToggle />}>
+                Actual and Final
+              </Accordion.Control>
+              <Accordion.Panel>
+                <ActualFinalForm form={form} />
+              </Accordion.Panel>
+            </Accordion.Item>
+
+            <Accordion.Item
+              value="permit-remarks"
+              bg={"blue.1"}
+              id="permit-remarks"
+            >
+              <Accordion.Control icon={<IconBookmark />}>
+                Permit Remarks
+              </Accordion.Control>
+              <Accordion.Panel>
+                <PermitRemarksForm form={form} />
+              </Accordion.Panel>
+            </Accordion.Item>
+
+            <Accordion.Item value="permits" bg={"orange.5"} id="permits">
+              <Accordion.Control icon={<IconLicense />}>
+                Permits
+              </Accordion.Control>
+              <Accordion.Panel>
+                <PermitsForm form={form} />
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
+        </ScrollSpyTabs>
       </form>
     </div>
   );
