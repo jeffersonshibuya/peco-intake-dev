@@ -23,7 +23,7 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
         <div className="flex items-center gap-1 justify-start h-full">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Text c="blue.5" fw={700} ml={10}>
-            PECO - Intake Form
+            PECO - intake Form
           </Text>
         </div>
       </AppShell.Header>

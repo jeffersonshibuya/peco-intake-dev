@@ -4,74 +4,146 @@ import { z } from "zod";
 
 export type ScheduledFormValues = {
   woNbr: number | undefined;
-  woDescription: string | undefined;
-  woProgram: string | undefined;
-  woRetirementGroup: string | undefined;
+  woDescription?: string | undefined;
+  woProgram?: string | undefined;
+  woRetirementGroup?: string | undefined;
 
   //  Scheduled
-  scheduledStart: Date | undefined;
-  scheduledMainInstallComplete: Date | undefined;
-  scheduledGasOnComplete: Date | undefined;
-  scheduledServicesStart: Date | undefined;
-  scheduledAllServicesComplete: Date | undefined;
-  scheduledRetirementComplete: Date | undefined;
+  scheduledStart?: Date | undefined | null;
+  scheduledMainInstallComplete?: Date | undefined | null;
+  scheduledGasOnComplete?: Date | undefined | null;
+  scheduledServicesStart?: Date | undefined | null;
+  scheduledAllServicesComplete?: Date | undefined | null;
+  scheduledRetirementComplete?: Date | undefined | null;
 
   // Main
-  actualMainInstallFeet: number | undefined;
-  targetMainInstallFeet: number | undefined;
-  updatedMainInstallFeet: number | undefined;
-  pctMainInstalled: number | undefined;
+  actualMainInstallFeet?: number | undefined | null;
+  targetMainInstallFeet?: number | undefined | null;
+  updatedMainInstallFeet?: number | undefined | null;
+  pctMainInstalled?: number | undefined | null;
 
   // Services
-  actualNbrServicesComplete: number | undefined;
-  updatedServices: number | undefined;
-  targetServices: number | undefined;
-  pctServicesComplete: number | undefined;
+  actualNbrServicesComplete?: number | undefined | null;
+  updatedServices?: number | undefined | null;
+  targetServices?: number | undefined | null;
+  pctServicesComplete?: number | undefined | null;
 
   // Retired
-  actualFtRetiredPerAsBuiltOutmoded: number | undefined;
-  targetFtRetiredOutmoded: number | undefined;
-  pctRetiredOutmodedComplete: number | undefined;
-  actualFtRetiredPerAsBuiltNonOutmoded: number | undefined;
-  targetFtRetiredNonOutmoded: number | undefined;
-  pctRetiredNonOutmodedComplete: number | undefined;
+  actualFtRetiredPerAsBuiltOutmoded?: number | undefined | null;
+  targetFtRetiredOutmoded?: number | undefined | null;
+  pctRetiredOutmodedComplete?: number | undefined | null;
+  actualFtRetiredPerAsBuiltNonOutmoded?: number | undefined | null;
+  targetFtRetiredNonOutmoded?: number | undefined | null;
+  pctRetiredNonOutmodedComplete?: number | undefined | null;
 
   // Actual and final
-  actualStart: Date | undefined;
-  actualMainInstallComplete: Date | undefined;
-  actualGasOnComplete: Date | undefined;
-  actualServicesStart: Date | undefined;
-  actualAllServicesComplete: Date | undefined;
-  actualRetirementComplete: Date | undefined;
-  actualPackageSubmittedDate: Date | undefined;
-  actualRetorationTicketSubmittedDate: Date | undefined;
-  finalInvoiceDateSubmitted: Date | undefined;
-  weekEnding: Date | undefined;
-  scopeYear: number | undefined;
-  cocRegion: Date | undefined;
-  buildingCoc: string | undefined;
-  polSub: number | undefined;
+  actualStart?: Date | undefined | null;
+  actualMainInstallComplete?: Date | undefined | null;
+  actualGasOnComplete?: Date | undefined | null;
+  actualServicesStart?: Date | undefined | null;
+  actualAllServicesComplete?: Date | undefined | null;
+  actualRetirementComplete?: Date | undefined | null;
+  actualPackageSubmittedDate?: Date | undefined | null;
+  actualRetorationTicketSubmittedDate?: Date | undefined | null;
+  finalInvoiceDateSubmitted?: Date | undefined | null;
+  weekEnding?: Date | undefined | null;
+  scopeYear?: number | undefined | null;
+  cocRegion?: string | undefined | null;
+  buildingCoc?: string | undefined | null;
+  polSub?: number | undefined | null;
 
   // Permit remarks
-  permitRemarks: string | undefined;
+  permitRemarks?: string | undefined | null;
 
   // Permits
-  statePermitStatus: string | undefined;
-  statePermitExpiration: string | undefined;
-  localPermitStatus: string | undefined;
-  localPermitExpiration: string | undefined;
-  mrInfo: string | undefined;
-  mrNeedDate: string | undefined;
-  soilTestDate: string | undefined;
-  soiltTestStatus: string | undefined;
-  procedureStatus: string | undefined;
-  gasOnProcedureRequired: string | undefined;
-  retirementProcedureRequired: string | undefined;
-  commentsFromPv: string | undefined;
-  carryOverFromPriorYear: string | undefined;
-  pullForward: string | undefined;
-  waf: string | undefined;
-  soiltTest: string | undefined;
+  statePermitStatus?: string | undefined | null;
+  statePermitExpiration?: string | undefined | null;
+  localPermitStatus?: string | undefined | null;
+  localPermitExpiration?: string | undefined | null;
+  mrInfo?: string | undefined | null;
+  mrNeedDate?: string | undefined | null;
+  soilTestDate?: string | undefined | null;
+  soiltTestStatus?: string | undefined | null;
+  procedureStatus?: string | undefined | null;
+  gasOnProcedureRequired?: string | undefined | null;
+  retirementProcedureRequired?: string | undefined | null;
+  commentsFromPv?: string | undefined | null;
+  carryOverFromPriorYear?: string | undefined | null;
+  pullForward?: string | undefined | null;
+  waf?: string | undefined | null;
+  soiltTest?: string | undefined | null;
+};
+
+export type ScheduledResponseValues = {
+  woNbr: number | undefined;
+  woDescription?: string | undefined;
+  woProgram?: string | undefined;
+  woRetirementGroup?: string | undefined;
+
+  //  Scheduled
+  scheduledStart?: string | null;
+  scheduledMainInstallComplete?: string | null;
+  scheduledGasOnComplete?: string | null;
+  scheduledServicesStart?: string | null;
+  scheduledAllServicesComplete?: string | null;
+  scheduledRetirementComplete?: string | null;
+
+  // Main
+  actualMainInstallFeet?: number | null;
+  targetMainInstallFeet?: number | null;
+  updatedMainInstallFeet?: number | null;
+  pctMainInstalled?: number | null;
+
+  // Services
+  actualNbrServicesComplete?: number | null;
+  updatedServices?: number | null;
+  targetServices?: number | null;
+  pctServicesComplete?: number | null;
+
+  // Retired
+  actualFtRetiredPerAsBuiltOutmoded?: number | null;
+  targetFtRetiredOutmoded?: number | null;
+  pctRetiredOutmodedComplete?: number | null;
+  actualFtRetiredPerAsBuiltNonOutmoded?: number | null;
+  targetFtRetiredNonOutmoded?: number | null;
+  pctRetiredNonOutmodedComplete?: number | null;
+
+  // Actual and final
+  actualStart?: string | null;
+  actualMainInstallComplete?: string | null;
+  actualGasOnComplete?: string | null;
+  actualServicesStart?: string | null;
+  actualAllServicesComplete?: string | null;
+  actualRetirementComplete?: string | null;
+  actualPackageSubmittedDate?: string | null;
+  actualRetorationTicketSubmittedDate?: string | null;
+  finalInvoiceDateSubmitted?: string | null;
+  weekEnding?: string | null;
+  scopeYear?: number | null;
+  cocRegion?: string | null;
+  buildingCoc?: string | null;
+  polSub?: number | null;
+
+  // Permit remarks
+  permitRemarks?: string | null;
+
+  // Permits
+  statePermitStatus?: string | null;
+  statePermitExpiration?: string | null;
+  localPermitStatus?: string | null;
+  localPermitExpiration?: string | null;
+  mrInfo?: string | null;
+  mrNeedDate?: string | null;
+  soilTestDate?: string | null;
+  soiltTestStatus?: string | null;
+  procedureStatus?: string | null;
+  gasOnProcedureRequired?: string | null;
+  retirementProcedureRequired?: string | null;
+  commentsFromPv?: string | null;
+  carryOverFromPriorYear?: string | null;
+  pullForward?: string | null;
+  waf?: string | null;
+  soiltTest?: string | null;
 };
 
 export type ScheduledFormProps = {

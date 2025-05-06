@@ -1,0 +1,1 @@
+ALTER TABLE "scheduled" ADD COLUMN "scheduled_services_start" date;

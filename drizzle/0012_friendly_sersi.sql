@@ -1,0 +1,1 @@
+ALTER TABLE "scheduled_changes" ADD CONSTRAINT "scheduled_changes_scheduled_id_scheduled_id_fk" FOREIGN KEY ("scheduled_id") REFERENCES "public"."scheduled"("id") ON DELETE cascade ON UPDATE no action;

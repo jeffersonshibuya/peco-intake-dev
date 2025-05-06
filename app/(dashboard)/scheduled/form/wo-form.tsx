@@ -14,10 +14,8 @@ const WoForm = ({ form }: ScheduledFormProps) => {
   }>();
 
   const handleWoSelection = (value: string | null) => {
-    console.log("value", value);
     if (value) {
       const woInfo = mockWorkOrders.find((wo) => wo.wo_nbr === parseInt(value));
-      console.log(woInfo);
       if (woInfo) {
         setWoSelected(woInfo);
         form.setValues({

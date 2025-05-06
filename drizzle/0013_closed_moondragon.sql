@@ -1,0 +1,1 @@
+ALTER TABLE "scheduled" ADD COLUMN "updated_main_install_feet" integer;

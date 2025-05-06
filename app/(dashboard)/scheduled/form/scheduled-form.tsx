@@ -18,7 +18,7 @@ const ScheduledForm = ({ form }: ScheduledFormProps) => {
               placeholder="Scheduled Start"
               value={form.getInputProps("scheduledStart").value}
               onChange={(value) =>
-                form.setFieldValue("scheduledStart", value || new Date())
+                form.setFieldValue("scheduledStart", value || null)
               }
               error={form.getInputProps("scheduledStart").error}
             />
@@ -30,7 +30,7 @@ const ScheduledForm = ({ form }: ScheduledFormProps) => {
               onChange={(value) =>
                 form.setFieldValue(
                   "scheduledMainInstallComplete",
-                  value || new Date()
+                  value || null
                 )
               }
               error={form.getInputProps("scheduledMainInstallComplete").error}
@@ -41,10 +41,7 @@ const ScheduledForm = ({ form }: ScheduledFormProps) => {
               placeholder="Scheduled Gas On Complete..."
               value={form.getInputProps("scheduledGasOnComplete").value}
               onChange={(value) =>
-                form.setFieldValue(
-                  "scheduledGasOnComplete",
-                  value || new Date()
-                )
+                form.setFieldValue("scheduledGasOnComplete", value || null)
               }
               error={form.getInputProps("scheduledGasOnComplete").error}
             />
@@ -57,13 +54,9 @@ const ScheduledForm = ({ form }: ScheduledFormProps) => {
               leftSection={<IconCalendar size={16} />}
               placeholder="Scheduled Services Start..."
               value={form.getInputProps("scheduledServicesStart").value}
-              // onChange={(value) =>
-              //   form.setFieldValue(
-              //     "scheduledServicesStart",
-              //     value || new Date()
-              //   )
-              // }
-              {...form.getInputProps("scheduledServicesStart")}
+              onChange={(value) =>
+                form.setFieldValue("scheduledServicesStart", value || null)
+              }
               error={form.getInputProps("scheduledServicesStart").error}
             />
             <DatePickerInput
@@ -74,7 +67,7 @@ const ScheduledForm = ({ form }: ScheduledFormProps) => {
               onChange={(value) =>
                 form.setFieldValue(
                   "scheduledAllServicesComplete",
-                  value || new Date()
+                  value || null
                 )
               }
               error={form.getInputProps("scheduledAllServicesComplete").error}
@@ -85,10 +78,7 @@ const ScheduledForm = ({ form }: ScheduledFormProps) => {
               placeholder="Scheduled Retirement Complete..."
               value={form.getInputProps("scheduledRetirementComplete").value}
               onChange={(value) =>
-                form.setFieldValue(
-                  "scheduledRetirementComplete",
-                  value || new Date()
-                )
+                form.setFieldValue("scheduledRetirementComplete", value || null)
               }
               error={form.getInputProps("scheduledRetirementComplete").error}
             />

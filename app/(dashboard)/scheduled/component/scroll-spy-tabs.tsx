@@ -26,11 +26,9 @@ export default function ScrollSpyTabs({
     const viewport = scrollRef.current?.querySelector(
       ".mantine-ScrollArea-viewport"
     );
-    console.log(viewport);
     if (!viewport) return;
 
     const onScroll = () => {
-      console.log("scrolling....");
       const scrollY = viewport.scrollTop + 200;
       let current = sections[0].id;
 

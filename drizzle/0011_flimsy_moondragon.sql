@@ -1,0 +1,1 @@
+ALTER TABLE "scheduled_changes" ALTER COLUMN "id" SET DEFAULT gen_random_uuid();

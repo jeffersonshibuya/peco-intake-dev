@@ -1,0 +1,1 @@
+ALTER TABLE "scheduled_changes" ALTER COLUMN "scheduled_id" SET DATA TYPE text;

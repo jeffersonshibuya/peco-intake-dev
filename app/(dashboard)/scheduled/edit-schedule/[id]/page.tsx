@@ -2,18 +2,14 @@
 
 import { mockWorkOrders } from "@/data/mock-wo";
 import { insertScheduledSchema } from "@/db/schema";
-import { useCreateSchedule } from "@/features/scheduled/api/use-create-scheduled";
 import { ScheduledFormValues } from "@/features/scheduled/types";
 import {
   Accordion,
   Box,
   Button,
-  Divider,
   Flex,
   Grid,
   Group,
-  Select,
-  Text,
   Title,
 } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
@@ -29,26 +25,33 @@ import {
   IconTextPlus,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import ScheduledForm from "./scheduled-form";
-import MainForm from "./main-form";
-import ServicesForm from "./services-form";
-import RetiredForm from "./retired-form";
-import ActualFinalForm from "./actual-final-form";
-import PermitRemarksForm from "./permit-remarks-form";
-import PermitsForm from "./permits-form";
-import ScrollSpyTabs from "../component/scroll-spy-tabs";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import ScrollSpyTabs from "../../component/scroll-spy-tabs";
+import { useGetSchedule } from "@/features/scheduled/api/use-get-schedule";
+import ScheduledForm from "../../form/scheduled-form";
+import ServicesForm from "../../form/services-form";
+import RetiredForm from "../../form/retired-form";
+import MainForm from "../../form/main-form";
+import ActualFinalForm from "../../form/actual-final-form";
+import PermitRemarksForm from "../../form/permit-remarks-form";
+import PermitsForm from "../../form/permits-form";
+import { normalizeSchedule } from "../../utils/normalizeSchedule";
+import { useEditSchedule } from "@/features/scheduled/api/use-edit-scheduled";
+import Loader from "@/app/components/loader";
 
-const ScheduledSPAFormPage = () => {
+const EditSchedulePage = () => {
+  const params = useParams<{ id: string }>();
   const router = useRouter();
-  const scheduleMutation = useCreateSchedule();
-  const [woSelected, setWoSelected] = useState<{
-    wo_nbr: number;
-    description: string;
-    program: string;
-    retirement_group: string;
-  } | null>(null);
+  const scheduleQuery = useGetSchedule(params.id);
+  const scheduleMutation = useEditSchedule(params.id);
+
+  const data = scheduleQuery.data || undefined;
+  const woInfo = mockWorkOrders.filter(
+    (value) => value.wo_nbr === data?.woNbr
+  )[0];
+  const loading = scheduleQuery.isPending;
+
   const [opened, setOpened] = useState<string[]>([
     "scheduled",
     "main",
@@ -57,94 +60,85 @@ const ScheduledSPAFormPage = () => {
     "actual-and-final",
     "permit-remarks",
     "permits",
-  ]); // multiple keys
+  ]);
 
-  const handleWoSelection = (value: string | null) => {
-    if (value) {
-      const woInfo = mockWorkOrders.find((wo) => wo.wo_nbr === parseInt(value));
-      if (woInfo) {
-        setWoSelected(woInfo);
-        form.setValues({
-          woNbr: woInfo.wo_nbr,
-        });
+  const defaultValues = scheduleQuery.data
+    ? {
+        woNbr: woInfo?.wo_nbr,
+        woDescription: woInfo?.description,
+        woProgram: woInfo?.program,
+        woRetirementGroup: woInfo?.retirement_group,
+
+        // Scheduled
+        scheduledStart: undefined,
+        scheduledMainInstallComplete: undefined,
+        scheduledGasOnComplete: undefined,
+        scheduledServicesStart: undefined,
+        scheduledAllServicesComplete: undefined,
+        scheduledRetirementComplete: undefined,
+
+        // Main
+        actualMainInstallFeet: undefined,
+        targetMainInstallFeet: undefined,
+        updatedMainInstallFeet: undefined,
+        pctMainInstalled: undefined,
+
+        // Services
+        actualNbrServicesComplete: undefined,
+        updatedServices: undefined,
+        targetServices: undefined,
+        pctServicesComplete: undefined,
+
+        // Retired
+        actualFtRetiredPerAsBuiltOutmoded: undefined,
+        targetFtRetiredOutmoded: undefined,
+        pctRetiredOutmodedComplete: undefined,
+        actualFtRetiredPerAsBuiltNonOutmoded: undefined,
+        targetFtRetiredNonOutmoded: undefined,
+        pctRetiredNonOutmodedComplete: undefined,
+
+        // Actual and Final
+        actualStart: undefined,
+        actualMainInstallComplete: undefined,
+        actualGasOnComplete: undefined,
+        actualServicesStart: undefined,
+        actualAllServicesComplete: undefined,
+        actualRetirementComplete: undefined,
+        actualPackageSubmittedDate: undefined,
+        actualRetorationTicketSubmittedDate: undefined,
+        finalInvoiceDateSubmitted: undefined,
+        weekEnding: undefined,
+        scopeYear: undefined,
+        cocRegion: undefined,
+        buildingCoc: undefined,
+        polSub: undefined,
+
+        // Permit remarks
+        permitRemarks: "",
+
+        // Permits
+        statePermitStatus: undefined,
+        statePermitExpiration: undefined,
+        localPermitStatus: undefined,
+        localPermitExpiration: undefined,
+        mrInfo: undefined,
+        mrNeedDate: undefined,
+        soilTestDate: undefined,
+        soiltTestStatus: undefined,
+        procedureStatus: undefined,
+        gasOnProcedureRequired: undefined,
+        retirementProcedureRequired: undefined,
+        commentsFromPv: undefined,
+        carryOverFromPriorYear: undefined,
+        pullForward: undefined,
+        waf: undefined,
+        soiltTest: undefined,
       }
-    }
-  };
+    : undefined;
 
   const form = useForm<ScheduledFormValues>({
     mode: "controlled",
-    initialValues: {
-      woNbr: undefined,
-      woDescription: undefined,
-      woProgram: undefined,
-      woRetirementGroup: undefined,
-
-      // Scheduled
-      scheduledStart: undefined,
-      scheduledMainInstallComplete: undefined,
-      scheduledGasOnComplete: undefined,
-      scheduledServicesStart: undefined,
-      scheduledAllServicesComplete: undefined,
-      scheduledRetirementComplete: undefined,
-
-      // Main
-      actualMainInstallFeet: undefined,
-      targetMainInstallFeet: undefined,
-      updatedMainInstallFeet: undefined,
-      pctMainInstalled: undefined,
-
-      // Services
-      actualNbrServicesComplete: undefined,
-      updatedServices: undefined,
-      targetServices: undefined,
-      pctServicesComplete: undefined,
-
-      // Retired
-      actualFtRetiredPerAsBuiltOutmoded: undefined,
-      targetFtRetiredOutmoded: undefined,
-      pctRetiredOutmodedComplete: undefined,
-      actualFtRetiredPerAsBuiltNonOutmoded: undefined,
-      targetFtRetiredNonOutmoded: undefined,
-      pctRetiredNonOutmodedComplete: undefined,
-
-      // Actual and Final
-      actualStart: undefined,
-      actualMainInstallComplete: undefined,
-      actualGasOnComplete: undefined,
-      actualServicesStart: undefined,
-      actualAllServicesComplete: undefined,
-      actualRetirementComplete: undefined,
-      actualPackageSubmittedDate: undefined,
-      actualRetorationTicketSubmittedDate: undefined,
-      finalInvoiceDateSubmitted: undefined,
-      weekEnding: undefined,
-      scopeYear: undefined,
-      cocRegion: undefined,
-      buildingCoc: undefined,
-      polSub: undefined,
-
-      // Permit remarks
-      permitRemarks: undefined,
-
-      // Permits
-      statePermitStatus: undefined,
-      statePermitExpiration: undefined,
-      localPermitStatus: undefined,
-      localPermitExpiration: undefined,
-      mrInfo: undefined,
-      mrNeedDate: undefined,
-      soilTestDate: undefined,
-      soiltTestStatus: undefined,
-      procedureStatus: undefined,
-      gasOnProcedureRequired: undefined,
-      retirementProcedureRequired: undefined,
-      commentsFromPv: undefined,
-      carryOverFromPriorYear: undefined,
-      pullForward: undefined,
-      waf: undefined,
-      soiltTest: undefined,
-    },
-
+    initialValues: defaultValues,
     validate: {
       woNbr: isNotEmpty("*Required"),
       scheduledStart: isNotEmpty("*Required"),
@@ -162,6 +156,17 @@ const ScheduledSPAFormPage = () => {
     },
   });
 
+  // When the data is ready, update the form values
+  useEffect(() => {
+    if (scheduleQuery.data) {
+      const values = normalizeSchedule(scheduleQuery.data);
+      form.setValues({
+        ...values,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scheduleQuery.data]);
+
   const handleSubmit = () => {
     const result = form.validate();
 
@@ -174,6 +179,10 @@ const ScheduledSPAFormPage = () => {
       return;
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div>
@@ -197,33 +206,9 @@ const ScheduledSPAFormPage = () => {
         <Grid mt={16} mb={10}>
           <Grid.Col span={10}>
             <Box bg="gray.1" p={"sm"} style={{ borderRadius: "5px" }}>
-              <Select
-                withAsterisk
-                label="Select a WO Nbr."
-                placeholder="Select a WO"
-                value={woSelected?.wo_nbr.toString() ?? null}
-                onChange={(value) => handleWoSelection(value)}
-                data={mockWorkOrders.map((wo) => `${wo.wo_nbr}`)}
-              />
-              {woSelected && (
-                <Flex my="5">
-                  <Text>Description: {woSelected?.description}</Text>
-                  <Divider
-                    orientation="vertical"
-                    size="md"
-                    mx={10}
-                    color="blue"
-                  />
-                  <Text>Program: {woSelected?.program}</Text>
-                  <Divider
-                    orientation="vertical"
-                    size="md"
-                    mx={10}
-                    color="blue"
-                  />
-                  <Text>Retirement Group: {woSelected?.retirement_group}</Text>
-                </Flex>
-              )}
+              WO Nbr.:
+              {woInfo?.wo_nbr} <br />
+              {woInfo?.description}
             </Box>
           </Grid.Col>
           <Grid.Col span={2}>
@@ -322,4 +307,4 @@ const ScheduledSPAFormPage = () => {
   );
 };
 
-export default ScheduledSPAFormPage;
+export default EditSchedulePage;

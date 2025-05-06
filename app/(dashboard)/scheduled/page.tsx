@@ -16,7 +16,7 @@ const ScheduledSPAPage = () => {
         <Button
           variant="fill"
           rightSection={<IconPlus size={14} color="white" />}
-          onClick={() => router.push("/scheduled/form")}
+          onClick={() => router.push(`/scheduled/new-schedule`)}
         >
           Add Schedule
         </Button>

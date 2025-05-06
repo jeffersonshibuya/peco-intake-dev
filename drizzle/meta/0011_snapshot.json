@@ -1,0 +1,389 @@
+{
+  "id": "976ff64d-6fa3-4b96-8607-89af67be3632",
+  "prevId": "7fb33550-f995-4a1f-83f8-ad4cc4ac7ccf",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.scheduled": {
+      "name": "scheduled",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "wo_nbr": {
+          "name": "wo_nbr",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "scheduled_start": {
+          "name": "scheduled_start",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "scheduled_main_install_complete": {
+          "name": "scheduled_main_install_complete",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scheduled_gas_on_complete": {
+          "name": "scheduled_gas_on_complete",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scheduled_all_services_complete": {
+          "name": "scheduled_all_services_complete",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scheduled_services_start": {
+          "name": "scheduled_services_start",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scheduled_retirement_complente": {
+          "name": "scheduled_retirement_complente",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_main_install_feet": {
+          "name": "actual_main_install_feet",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "target_main_install_feet": {
+          "name": "target_main_install_feet",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pct_main_installed": {
+          "name": "pct_main_installed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_nbr_services_complete": {
+          "name": "actual_nbr_services_complete",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_services": {
+          "name": "updated_services",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "target_services": {
+          "name": "target_services",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pct_services_complete": {
+          "name": "pct_services_complete",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_ft_retired_per_as_built_outmoded": {
+          "name": "actual_ft_retired_per_as_built_outmoded",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "target_ft_retired_outmoded": {
+          "name": "target_ft_retired_outmoded",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pct_retired_outmoded_complete": {
+          "name": "pct_retired_outmoded_complete",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_ft_retired_per_as_built_non_outmoded": {
+          "name": "actual_ft_retired_per_as_built_non_outmoded",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "target_ft_retired_non_outmoded": {
+          "name": "target_ft_retired_non_outmoded",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pct_retired_non_outmoded_complete": {
+          "name": "pct_retired_non_outmoded_complete",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_start": {
+          "name": "actual_start",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_main_install_complete": {
+          "name": "actual_main_install_complete",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_gas_on_complete": {
+          "name": "actual_gas_on_complete",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_services_start": {
+          "name": "actual_services_start",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_all_services_complete": {
+          "name": "actual_all_services_complete",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_retirement_complete": {
+          "name": "actual_retirement_complete",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_package_submitted_date": {
+          "name": "actual_package_submitted_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "actual_restoration_ticket_submitted_date": {
+          "name": "actual_restoration_ticket_submitted_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "final_invoice_date_submitted": {
+          "name": "final_invoice_date_submitted",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "week_ending": {
+          "name": "week_ending",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scope_year": {
+          "name": "scope_year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "coc_region": {
+          "name": "coc_region",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "builing_coc": {
+          "name": "builing_coc",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pol_sub": {
+          "name": "pol_sub",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "permit_remarks": {
+          "name": "permit_remarks",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "state_permit_status": {
+          "name": "state_permit_status",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "state_permit_expiration": {
+          "name": "state_permit_expiration",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "local_permit_status": {
+          "name": "local_permit_status",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "local_permit_expiration": {
+          "name": "local_permit_expiration",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mr_info": {
+          "name": "mr_info",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mr_need_date": {
+          "name": "mr_need_date",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "soil_test_date": {
+          "name": "soil_test_date",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "soilt_test_status": {
+          "name": "soilt_test_status",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "procedure_status": {
+          "name": "procedure_status",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gas_on_procedure_required": {
+          "name": "gas_on_procedure_required",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "retirement_procedure_required": {
+          "name": "retirement_procedure_required",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "comments_from_pv": {
+          "name": "comments_from_pv",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "carry_over_from_prior_year": {
+          "name": "carry_over_from_prior_year",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pull_forward": {
+          "name": "pull_forward",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "waf": {
+          "name": "waf",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "soilt_test": {
+          "name": "soilt_test",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.scheduled_changes": {
+      "name": "scheduled_changes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "scheduled_id": {
+          "name": "scheduled_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "changed_at": {
+          "name": "changed_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "data": {
+          "name": "data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "version": {
+          "name": "version",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
