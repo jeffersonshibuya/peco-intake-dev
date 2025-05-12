@@ -18,13 +18,13 @@ import {
 } from "@tabler/icons-react";
 
 const sections = [
-  { id: "scheduled", label: "Scheduled", color: "#fc5c65", activeColor: "#eb3b5a", icon: <IconCalendar /> },
-  { id: "main", label: "Main", color: "#fd9644", activeColor: "#fa8231",icon: <IconHome /> },
-  { id: "services", label: "Services", color: "#fed330", activeColor: "#f7b731",icon: <IconBackhoe /> },
-  { id: "retired", label: "Retired", color: "#26de81", activeColor: "#20bf6b", icon: <IconBookmark /> },
-  { id: "actual-and-final", label: "Actual and Final", color: "#2bcbba", activeColor: "#0fb9b1", icon: <IconClockPause /> },
-  { id: "permit-remarks", label: "Permit Remarks", color: "#45aaf2", activeColor: "#2d98da", icon: <IconHistoryToggle /> },
-  { id: "permits", label: "Permits", color: "#4b7bec", activeColor: "#3867d6", icon: <IconLicense /> },
+  { id: "scheduled", label: "Scheduled", color: "#fc5c65", activeColor: "#eb3b5a", backgroundColor: "#fc5c6520", icon: <IconCalendar /> },
+  { id: "main", label: "Main", color: "#fd9644", activeColor: "#fa8231", backgroundColor: "#fd964420", icon: <IconHome /> },
+  { id: "services", label: "Services", color: "#fed330", activeColor: "#f7b731", backgroundColor: "#fed33020", icon: <IconBackhoe /> },
+  { id: "retired", label: "Retired", color: "#26de81", activeColor: "#20bf6b", backgroundColor: "#26de8120", icon: <IconBookmark /> },
+  { id: "actual-and-final", label: "Actual and Final", color: "#2bcbba", activeColor: "#0fb9b1", backgroundColor: "#2bcbba20", icon: <IconClockPause /> },
+  { id: "permit-remarks", label: "Permit Remarks", color: "#45aaf2", activeColor: "#2d98da", backgroundColor: "#45aaf220", icon: <IconHistoryToggle /> },
+  { id: "permits", label: "Permits", color: "#4b7bec", activeColor: "#3867d6", backgroundColor: "#4b7bec20", icon: <IconLicense /> },
 ];
 
 export default function ScrollSpyTabs({
@@ -80,18 +80,26 @@ export default function ScrollSpyTabs({
         keepMounted={false}
         mt={15}
         variant="pills"
-        styles={{
-          tab: {
-            transition: "border-color 0.5s ease, color 0.5s ease",
-          },
-        }}
       >
         <Tabs.List>
-          {sections.map((section) => (
-            <Tabs.Tab key={section.id} value={section.id} bg={section.color} c={section.activeColor} leftSection={section.icon}>
-              {section.label}
-            </Tabs.Tab>
-          ))}
+          {sections.map((section) => {
+            const isActive = activeTab === section.id;
+            return (
+              <Tabs.Tab
+                key={section.id}
+                value={section.id}
+                leftSection={section.icon}
+                style={{
+                  backgroundColor: isActive ? section.activeColor : section.backgroundColor,
+                  color: isActive ? "#fff" : section.color,
+                  fontWeight: 700,
+                  transition: "background-color 0.3s, color 0.3s",
+                }}
+              >
+                {section.label}
+              </Tabs.Tab>
+            );
+          })}
         </Tabs.List>
       </Tabs>
       <Stack>
