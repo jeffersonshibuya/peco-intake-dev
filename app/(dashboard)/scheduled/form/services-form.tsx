@@ -31,12 +31,13 @@ const ServicesForm = ({ form }: ScheduledFormProps) => {
           </Stack>
         </Grid.Col>
         <Grid.Col span={{ base: 12, md: 6 }}>
-          <Fieldset legend="">
+          <Fieldset legend="" bg="#eee">
             <Stack
               align="stretch"
               justify="center"
               gap="md"
               style={{ flex: 2 }}
+              c="#f7b731"
             >
               <Select
                 label="Target Services"
@@ -51,6 +52,7 @@ const ServicesForm = ({ form }: ScheduledFormProps) => {
                 value={
                   form.values.pctServicesComplete?.toString() ?? "Calc Value"
                 }
+                bg="#f7b731"
               />
             </Stack>
           </Fieldset>

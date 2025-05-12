@@ -10,7 +10,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
         <Grid.Col span={{ base: 12, md: 6 }}>
           <Stack style={{ flex: 1 }}></Stack>
           <Stack align="stretch" justify="center" gap="md" style={{ flex: 2 }}>
-            <Fieldset>
+            <Fieldset bg="#ddd">
               <Stack
                 align="stretch"
                 justify="center"
@@ -28,6 +28,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   value={form.values.woNbr?.toString() ?? null}
                   onChange={() => {}}
                   data={["Test 1", "Test 2", "Test 3"]}
+                  c="#3867d6"
                 />
                 <Select
                   label="State Permit Expiration"
@@ -37,10 +38,11 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   value={form.values.woNbr?.toString() ?? null}
                   onChange={() => {}}
                   data={["Test 1", "Test 2", "Test 3"]}
+                  c="#3867d6"
                 />
               </Stack>
             </Fieldset>
-            <Fieldset>
+            <Fieldset bg="#ddd">
               <Stack
                 align="stretch"
                 justify="center"
@@ -58,6 +60,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   value={form.values.woNbr?.toString() ?? null}
                   onChange={() => {}}
                   data={["Test 1", "Test 2", "Test 3"]}
+                  c="#3867d6"
                 />
                 <Select
                   label="Local Permit Expiration"
@@ -67,6 +70,7 @@ const PermitsForm = ({ form }: ScheduledFormProps) => {
                   value={form.values.woNbr?.toString() ?? null}
                   onChange={() => {}}
                   data={["Test 1", "Test 2", "Test 3"]}
+                  c="#3867d6"
                 />
               </Stack>
             </Fieldset>

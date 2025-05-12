@@ -39,7 +39,7 @@ const RetiredForm = ({ form }: ScheduledFormProps) => {
           </Stack>
         </Grid.Col>
         <Grid.Col span={{ base: 12, md: 6 }}>
-          <Fieldset legend="">
+          <Fieldset legend="" bg="#ddd">
             <Stack
               align="stretch"
               justify="center"
@@ -54,6 +54,7 @@ const RetiredForm = ({ form }: ScheduledFormProps) => {
                 value={form.values.woNbr?.toString() ?? null}
                 onChange={() => {}}
                 data={["Test 1", "Test 2", "Test 3"]}
+              c="#20bf6b"
               />
               <ShowValue
                 label="Pct Retired (outmoded) Complete"
@@ -61,6 +62,7 @@ const RetiredForm = ({ form }: ScheduledFormProps) => {
                   form.values.pctRetiredOutmodedComplete?.toString() ??
                   "Calc Value"
                 }
+              bg="#20bf6b"
               />
               <ShowValue
                 label="Pct Retired (non-outmoded) Complete"
@@ -68,6 +70,7 @@ const RetiredForm = ({ form }: ScheduledFormProps) => {
                   form.values.pctRetiredNonOutmodedComplete?.toString() ??
                   "Calc Value"
                 }
+              bg="#20bf6b"
               />
             </Stack>
           </Fieldset>

@@ -140,7 +140,7 @@ const ActualFinalForm = ({ form }: ScheduledFormProps) => {
           </Stack>
         </Grid.Col>
         <Grid.Col span={{ base: 12, md: 6 }}>
-          <Fieldset legend="">
+          <Fieldset legend="" bg="#ddd">
             <Stack
               align="stretch"
               justify="center"
@@ -155,6 +155,7 @@ const ActualFinalForm = ({ form }: ScheduledFormProps) => {
                 value={form.values.woNbr?.toString() ?? null}
                 onChange={() => {}}
                 data={["2021", "2022", "2023", "2024", "2025"]}
+                c="#0fb9b1"
               />
               <Select
                 label="COC Region"
@@ -164,6 +165,7 @@ const ActualFinalForm = ({ form }: ScheduledFormProps) => {
                 value={form.values.woNbr?.toString() ?? null}
                 onChange={() => {}}
                 data={["North", "South", "East", "West"]}
+                c="#0fb9b1"
               />
               <Select
                 label="Building COC"
@@ -173,6 +175,7 @@ const ActualFinalForm = ({ form }: ScheduledFormProps) => {
                 value={form.values.woNbr?.toString() ?? null}
                 onChange={() => {}}
                 data={["Building 01", "Building 02", "Building 03"]}
+                c="#0fb9b1"
               />
               <Select
                 label="Pol Sub"
@@ -182,6 +185,7 @@ const ActualFinalForm = ({ form }: ScheduledFormProps) => {
                 value={form.values.woNbr?.toString() ?? null}
                 onChange={() => {}}
                 data={["550", "511"]}
+                c="#0fb9b1"
               />
             </Stack>
           </Fieldset>

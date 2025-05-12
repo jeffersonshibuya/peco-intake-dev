@@ -29,13 +29,14 @@ const MainForm = ({ form }: ScheduledFormProps) => {
             />
           </Stack>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Fieldset legend="">
+        <Grid.Col span={{ base: 12, md: 6 }} >
+          <Fieldset legend="" bg="#ddd">
             <Stack
               align="stretch"
               justify="center"
               gap="md"
               style={{ flex: 2 }}
+              c="#fa8231"
             >
               <Select
                 label="Target Main Installed Feet"
@@ -45,10 +46,12 @@ const MainForm = ({ form }: ScheduledFormProps) => {
                 // onChange={(value) => form.setValues()}
                 {...form.getInputProps("targetMainInstallFeet")}
                 data={["Test 1", "Test 2", "Test 3"]}
+                
               />
               <ShowValue
                 label="Pct Main Installed"
                 value={form.values.pctMainInstalled?.toString() ?? "Calc Value"}
+                bg="#fa8231"
               />
             </Stack>
           </Fieldset>
