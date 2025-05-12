@@ -80,6 +80,7 @@ export default function ScrollSpyTabs({
         keepMounted={false}
         mt={15}
         variant="pills"
+        className="mb-2"
       >
         <Tabs.List>
           {sections.map((section) => {
