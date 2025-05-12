@@ -232,7 +232,7 @@ const EditSchedulePage = () => {
             onChange={setOpened}
             mt={15}
           >
-            <Accordion.Item value="scheduled" bg={"yellow.3"} id="scheduled">
+            <Accordion.Item value="scheduled" bg={"#fc5c65"} id="scheduled">
               <Accordion.Control icon={<IconCalendar />}>
                 Scheduled
               </Accordion.Control>
@@ -241,14 +241,14 @@ const EditSchedulePage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="main" bg="#FFFFCC" id="main">
+            <Accordion.Item value="main" bg={"#fd9644"} id="main">
               <Accordion.Control icon={<IconHome />}>Main</Accordion.Control>
               <Accordion.Panel>
                 <MainForm form={form} />
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="services" bg={"#F8CBAD"} id="services">
+            <Accordion.Item value="services" bg={"#fed330"} id="services">
               <Accordion.Control icon={<IconBackhoe />}>
                 Services
               </Accordion.Control>
@@ -257,7 +257,7 @@ const EditSchedulePage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="retired" bg={"#DBDBDB"} id="retired">
+            <Accordion.Item value="retired" bg={"#26de81"} id="retired">
               <Accordion.Control icon={<IconClockPause />}>
                 Retired
               </Accordion.Control>

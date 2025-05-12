@@ -248,8 +248,8 @@ const ScheduledSPAFormPage = () => {
             onChange={setOpened}
             mt={15}
           >
-            <Accordion.Item value="scheduled" bg={"yellow.3"} id="scheduled">
-              <Accordion.Control icon={<IconCalendar />}>
+            <Accordion.Item value="scheduled" bg={"#fc5c65"} id="scheduled">
+              <Accordion.Control icon={<IconCalendar />} bg={"#eb3b5a"} c={"#ffffff"} fz="h2">
                 Scheduled
               </Accordion.Control>
               <Accordion.Panel>
@@ -257,14 +257,14 @@ const ScheduledSPAFormPage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="main" bg="#FFFFCC" id="main">
+            <Accordion.Item value="main" bg={"#fd9644"} id="main">
               <Accordion.Control icon={<IconHome />}>Main</Accordion.Control>
               <Accordion.Panel>
                 <MainForm form={form} />
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="services" bg={"#F8CBAD"} id="services">
+            <Accordion.Item value="services" bg={"#fed330"} id="services">
               <Accordion.Control icon={<IconBackhoe />}>
                 Services
               </Accordion.Control>
@@ -273,7 +273,7 @@ const ScheduledSPAFormPage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="retired" bg={"#DBDBDB"} id="retired">
+            <Accordion.Item value="retired" bg={"#26de81"} id="retired">
               <Accordion.Control icon={<IconClockPause />}>
                 Retired
               </Accordion.Control>
@@ -284,7 +284,7 @@ const ScheduledSPAFormPage = () => {
 
             <Accordion.Item
               value="actual-and-final"
-              bg={"#C6E0B4"}
+              bg={"#2bcbba"}
               id="actual-and-final"
             >
               <Accordion.Control icon={<IconHistoryToggle />}>
@@ -297,7 +297,7 @@ const ScheduledSPAFormPage = () => {
 
             <Accordion.Item
               value="permit-remarks"
-              bg={"blue.1"}
+              bg={"#45aaf2"}
               id="permit-remarks"
             >
               <Accordion.Control icon={<IconBookmark />}>
@@ -308,7 +308,7 @@ const ScheduledSPAFormPage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="permits" bg={"orange.5"} id="permits">
+            <Accordion.Item value="permits" bg={"#4b7bec"} id="permits">
               <Accordion.Control icon={<IconLicense />}>
                 Permits
               </Accordion.Control>
