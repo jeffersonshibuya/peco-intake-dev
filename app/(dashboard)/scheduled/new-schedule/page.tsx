@@ -247,6 +247,11 @@ const ScheduledSPAFormPage = () => {
             value={opened}
             onChange={setOpened}
             mt={15}
+            styles={{
+              panel: {
+                color: '#fff',
+              },
+            }}
           >
             <Accordion.Item value="scheduled" bg="#fc5c65" id="scheduled">
               <Accordion.Control icon={<IconCalendar />} bg="#eb3b5a" c="#fff" fz="h2">
