@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { mockWorkOrders } from "@/data/mock-wo";
-import { insertScheduledSchema } from "@/db/schema";
-import { ScheduledFormValues } from "@/features/scheduled/types";
+import { mockWorkOrders } from '@/data/mock-wo';
+import { insertScheduledSchema } from '@/db/schema';
+import { ScheduledFormValues } from '@/features/scheduled/types';
 import {
   Accordion,
   Box,
@@ -11,8 +11,8 @@ import {
   Grid,
   Group,
   Title,
-} from "@mantine/core";
-import { isNotEmpty, useForm } from "@mantine/form";
+} from '@mantine/core';
+import { isNotEmpty, useForm } from '@mantine/form';
 import {
   IconBackhoe,
   IconBookmark,
@@ -23,22 +23,22 @@ import {
   IconHome,
   IconLicense,
   IconTextPlus,
-} from "@tabler/icons-react";
-import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import ScrollSpyTabs from "../../component/scroll-spy-tabs";
-import { useGetSchedule } from "@/features/scheduled/api/use-get-schedule";
-import ScheduledForm from "../../form/scheduled-form";
-import ServicesForm from "../../form/services-form";
-import RetiredForm from "../../form/retired-form";
-import MainForm from "../../form/main-form";
-import ActualFinalForm from "../../form/actual-final-form";
-import PermitRemarksForm from "../../form/permit-remarks-form";
-import PermitsForm from "../../form/permits-form";
-import { normalizeSchedule } from "../../utils/normalizeSchedule";
-import { useEditSchedule } from "@/features/scheduled/api/use-edit-scheduled";
-import Loader from "@/app/components/loader";
+} from '@tabler/icons-react';
+import Link from 'next/link';
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import ScrollSpyTabs from '../../component/scroll-spy-tabs';
+import { useGetSchedule } from '@/features/scheduled/api/use-get-schedule';
+import ScheduledForm from '../../form/scheduled-form';
+import ServicesForm from '../../form/services-form';
+import RetiredForm from '../../form/retired-form';
+import MainForm from '../../form/main-form';
+import ActualFinalForm from '../../form/actual-final-form';
+import PermitRemarksForm from '../../form/permit-remarks-form';
+import PermitsForm from '../../form/permits-form';
+import { normalizeSchedule } from '../../utils/normalizeSchedule';
+import { useEditSchedule } from '@/features/scheduled/api/use-edit-scheduled';
+import Loader from '@/app/components/loader';
 
 const EditSchedulePage = () => {
   const params = useParams<{ id: string }>();
@@ -53,13 +53,13 @@ const EditSchedulePage = () => {
   const loading = scheduleQuery.isPending;
 
   const [opened, setOpened] = useState<string[]>([
-    "scheduled",
-    "main",
-    "services",
-    "retired",
-    "actual-and-final",
-    "permit-remarks",
-    "permits",
+    'scheduled',
+    'main',
+    'services',
+    'retired',
+    'actual-and-final',
+    'permit-remarks',
+    'permits',
   ]);
 
   const defaultValues = scheduleQuery.data
@@ -114,7 +114,7 @@ const EditSchedulePage = () => {
         polSub: undefined,
 
         // Permit remarks
-        permitRemarks: "",
+        permitRemarks: '',
 
         // Permits
         statePermitStatus: undefined,
@@ -137,11 +137,11 @@ const EditSchedulePage = () => {
     : undefined;
 
   const form = useForm<ScheduledFormValues>({
-    mode: "controlled",
+    mode: 'controlled',
     initialValues: defaultValues,
     validate: {
-      woNbr: isNotEmpty("*Required"),
-      scheduledStart: isNotEmpty("*Required"),
+      woNbr: isNotEmpty('*Required'),
+      scheduledStart: isNotEmpty('*Required'),
       // scheduledMainInstallComplete: isNotEmpty("*Required"),
       // scheduledGasOnComplete: isNotEmpty("*Required"),
       // scheduledServicesStart: isNotEmpty("*Required"),
@@ -175,7 +175,7 @@ const EditSchedulePage = () => {
         ...form.values,
       });
       scheduleMutation.mutate(parsed);
-      router.push("/scheduled");
+      router.push('/scheduled');
       return;
     }
   };
@@ -191,49 +191,53 @@ const EditSchedulePage = () => {
           e.preventDefault();
           handleSubmit();
         }}
-        className="mt-3"
+        className='mt-3'
       >
-        <Flex align="center" py={5}>
-          <Button component={Link} href="/scheduled" variant="light" mr={10}>
+        <Flex align='center' py={5}>
+          <Button component={Link} href='/scheduled' variant='light' mr={10}>
             <IconChevronLeft size={30} stroke={2.5} />
             Back
           </Button>
-          <Title order={1} size="h3" className="text-slate-700">
+          <Title order={1} size='h3' className='text-slate-700'>
             Add New Scheduled
           </Title>
         </Flex>
 
         <Grid mt={16} mb={10}>
           <Grid.Col span={10}>
-            <Box bg="gray.1" p={"sm"} style={{ borderRadius: "5px" }}>
+            <Box bg='gray.1' p={'sm'} style={{ borderRadius: '5px' }}>
               WO Nbr.:
               {woInfo?.wo_nbr} <br />
               {woInfo?.description}
             </Box>
           </Grid.Col>
           <Grid.Col span={2}>
-            <Group justify="flex-end" mt="md">
+            <Group justify='flex-end' mt='md'>
               <Button
-                type="submit"
-                size="lg"
+                type='submit'
+                size='lg'
                 rightSection={<IconTextPlus size={24} />}
                 disabled={scheduleMutation.isPending}
               >
-                {scheduleMutation.isPending ? "Saving..." : "Save"}
+                {scheduleMutation.isPending ? 'Saving...' : 'Save'}
               </Button>
             </Group>
           </Grid.Col>
         </Grid>
         <ScrollSpyTabs>
           <Accordion
-            variant="separated"
+            variant='separated'
             multiple
             value={opened}
             onChange={setOpened}
             mt={15}
           >
-            <Accordion.Item value="scheduled" bg={"#fc5c65"} id="scheduled">
-              <Accordion.Control icon={<IconCalendar />}>
+            <Accordion.Item value='scheduled' bg={'#fc5c6520'} id='scheduled'>
+              <Accordion.Control
+                icon={<IconCalendar />}
+                bg={'#eb3b5a'}
+                c={'#fff'}
+              >
                 Scheduled
               </Accordion.Control>
               <Accordion.Panel>
@@ -241,15 +245,21 @@ const EditSchedulePage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="main" bg={"#fd9644"} id="main">
-              <Accordion.Control icon={<IconHome />}>Main</Accordion.Control>
+            <Accordion.Item value='main' bg={'#fd964420'} id='main'>
+              <Accordion.Control icon={<IconHome />} bg={'#fa8231'} c={'#fff'}>
+                Main
+              </Accordion.Control>
               <Accordion.Panel>
                 <MainForm form={form} />
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="services" bg={"#fed330"} id="services">
-              <Accordion.Control icon={<IconBackhoe />}>
+            <Accordion.Item value='services' bg={'#fed33020'} id='services'>
+              <Accordion.Control
+                icon={<IconBackhoe />}
+                bg={'#f7b731'}
+                c={'#fff'}
+              >
                 Services
               </Accordion.Control>
               <Accordion.Panel>
@@ -257,8 +267,12 @@ const EditSchedulePage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="retired" bg={"#26de81"} id="retired">
-              <Accordion.Control icon={<IconClockPause />}>
+            <Accordion.Item value='retired' bg={'#26de8120'} id='retired'>
+              <Accordion.Control
+                icon={<IconClockPause />}
+                bg={'#20bf6b'}
+                c={'#fff'}
+              >
                 Retired
               </Accordion.Control>
               <Accordion.Panel>
@@ -267,11 +281,15 @@ const EditSchedulePage = () => {
             </Accordion.Item>
 
             <Accordion.Item
-              value="actual-and-final"
-              bg={"#C6E0B4"}
-              id="actual-and-final"
+              value='actual-and-final'
+              bg={'#2bcbba20'}
+              id='actual-and-final'
             >
-              <Accordion.Control icon={<IconHistoryToggle />}>
+              <Accordion.Control
+                icon={<IconHistoryToggle />}
+                bg={'#0fb9b1'}
+                c={'#fff'}
+              >
                 Actual and Final
               </Accordion.Control>
               <Accordion.Panel>
@@ -280,11 +298,15 @@ const EditSchedulePage = () => {
             </Accordion.Item>
 
             <Accordion.Item
-              value="permit-remarks"
-              bg={"blue.1"}
-              id="permit-remarks"
+              value='permit-remarks'
+              bg={'#45aaf220'}
+              id='permit-remarks'
             >
-              <Accordion.Control icon={<IconBookmark />}>
+              <Accordion.Control
+                icon={<IconBookmark />}
+                bg={'#2d98da'}
+                c={'#fff'}
+              >
                 Permit Remarks
               </Accordion.Control>
               <Accordion.Panel>
@@ -292,8 +314,12 @@ const EditSchedulePage = () => {
               </Accordion.Panel>
             </Accordion.Item>
 
-            <Accordion.Item value="permits" bg={"orange.5"} id="permits">
-              <Accordion.Control icon={<IconLicense />}>
+            <Accordion.Item value='permits' bg={'#4b7bec20'} id='permits'>
+              <Accordion.Control
+                icon={<IconLicense />}
+                bg={'#3867d6'}
+                c={'#fff'}
+              >
                 Permits
               </Accordion.Control>
               <Accordion.Panel>
