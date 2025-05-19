@@ -11,7 +11,7 @@ const ScheduledSPAPage = () => {
     <>
       <Flex align="center" justify={"space-between"} py={5}>
         <Title order={1} size="h2">
-          Scheduled
+          Scheduled Work Orders
         </Title>
         <Button
           variant="fill"
